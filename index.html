@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Туристический сайт</title>
+<style>
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+    line-height: 1.6;
+  }
+
+  header {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px 40px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    color: #1e90ff;
+    animation: fadeInDown 1s ease forwards;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #1e90ff;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #1e90ff;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+  }
+
+  nav a:hover {
+    color: #104e8b;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(30, 144, 255, 0.3);
+  }
+
+  .hero img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    filter: brightness(0.85);
+    animation: zoomIn 15s infinite alternate ease-in-out;
+  }
+
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  }
+
+  .hero-text h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: fadeInUp 2s ease forwards;
+  }
+
+  .hero-text p {
+    font-size: 1.2rem;
+    animation: fadeInUp 2s 0.5s ease forwards;
+  }
+
+  .btn {
+    display: inline-block;
+    background: #1e90ff;
+    color: white;
+    padding: 12px 28px;
+    margin-top: 20px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(30,144,255,0.4);
+  }
+
+  .btn:hover {
+    background: #104e8b;
+    transform: scale(1.05);
+  }
+
+  section.destinations {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 30px;
+  }
+
+  .destination {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .destination:hover {
+    transform: translateY(-10px);
+  }
+
+  .destination img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .destination-content {
+    padding: 20px;
+  }
+
+  .destination-content h3 {
+    margin-bottom: 10px;
+    color: #1e90ff;
+  }
+
+  .destination-content p {
+    color: #555;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    margin-top: 80px;
+    background: #1e90ff;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes zoomIn {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+    .hero-text h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Путешествуй с нами</h1>
+  <nav>
+    <a href="#destinations">Популярные направления</a>
+    <a href="#about">О нас</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80" alt="Пляж">
+    <div class="hero-text">
+      <h2>Открой для себя мир</h2>
+      <p>Лучшие туры по доступным ценам</p>
+      <a href="#destinations" class="btn">Начать путешествие</a>
+    </div>
+  </section>
+
+  <section class="destinations" id="destinations">
+    <div class="destination">
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80" alt="Париж">
+      <div class="destination-content">
+        <h3>Париж, Франция</h3>
+        <p>Город любви и света, с культовыми достопримечательностями и романтической атмосферой.</p>
+      </div>
+    </div>
+
+    <div class="destination">
+      <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Токио">
+      <div class="destination-content">
+        <h3>Токио, Япония</h3>
+        <p>Современный мегаполис с традиционной культурой, технологиями и яркой ночной жизнью.</p>
+      </div>
+    </div>
+
+    <div class="destination">
+      <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=800&q=80" alt="Мальдивы">
+      <div class="destination-content">
+        <h3>Мальдивы</h3>
+        <p>Райские острова с белоснежными пляжами и кристально чистой водой для идеального отдыха.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="margin-top: 80px; padding: 20px; background: #f0f8ff; border-radius: 15px;">
+    <h2 style="color: #1e90ff; margin-bottom: 15px;">О нас</h2>
+    <p style="max-width: 700px; margin: auto; color: #555;">
+      Мы — команда опытных путешественников, которая помогает вам открыть новые горизонты.
+      Предлагаем туры на любой вкус и бюджет, а также поддержку на каждом этапе вашего путешествия.
+    </p>
+  </section>
+
+  <section id="contact" style="margin-top: 60px; padding: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+    <h2 style="color: #1e90ff; margin-bottom: 20px; text-align:center;">Связаться с нами</h2>
+    <form action="https://example.com/send" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" name="name" placeholder="Ваше имя" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
+      <input type="email" name="email" placeholder="Email" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;">
+      <textarea name="message" rows="4" placeholder="Сообщение" required style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;"></textarea>
+      <button type="submit" class="btn" style="align-self: center; width: 150px;">Отправить</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Путешествуй с нами. Все права защищены.</p>
+</footer>
+
+</body>
+</html>
